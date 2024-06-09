@@ -42,15 +42,9 @@ public class SequentialBucketSort {
         for (int i = 0; i < numBuckets; i++) {
             long inicio = System.nanoTime();
             insertionSort(buckets[i]);
-            /*
-            try {
-                Thread.sleep(300);  // Simular operación costosa
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
             long fin = System.nanoTime();
             long duracion = fin - inicio;
-            System.out.println("Bucket " + i + " ordenado en: " + duracion / 1000 + " ms");
+            System.out.println("Bucket " + i + " ordenado en: " + duracion / 1000 + " microsegundos");
         }
         // Concatenar todos los buckets en arr[]
         int index = 0;
@@ -64,7 +58,7 @@ public class SequentialBucketSort {
     // Probamos la funcion en el main
     public static void main(String[] args) {
         
-        int tamanio = 12; // Definir el tamaño del array
+        int tamanio = 1000; // Definir el tamaño del array
 
         // Generar números aleatorios en el array
         float[] arr = new float[tamanio]; // Crear un array de floats con el tamaño definido
@@ -82,7 +76,7 @@ public class SequentialBucketSort {
         for (float num : arr) {
             System.out.print(num + " / "); // Imprimir el array original 
         }
-        System.out.println();
+        System.out.println("\n");
 
         // Ordenar el array usando bucket sort
         bucketSort(arr, numBuckets, minValor, maxValor); // Llamar a la función bucketSort para ordenar el array

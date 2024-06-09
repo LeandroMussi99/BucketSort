@@ -15,17 +15,9 @@ public class ConcurrentBucketSort extends Thread {
     public void run() {
         long startTime = System.nanoTime();  // Tiempo de inicio
         insertionSort(bucket);  // Ordena el bucket usando ordenación por inserción
-        /*
-        try {
-			sleep(300);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}  */  
-        
         long endTime = System.nanoTime();  // Tiempo de finalización
         long duration = endTime - startTime;  // Duración de la ordenación
-        System.out.println("Hilo " + Thread.currentThread().getId() + " tardo: " + duration / 1000 + " ms");
+        System.out.println("Hilo " + Thread.currentThread().getName() + " tardo: " + duration / 1000 + " microsegundos");
     }
 
     // Función de ordenación por inserción para ordenar buckets individuales
@@ -90,7 +82,7 @@ public class ConcurrentBucketSort extends Thread {
     // Probamos la funcion en el main
     public static void main(String[] args) throws InterruptedException {
         // Tamaño dinámico del array
-        int size = 12;
+        int size = 1000;
 
         // Generar números aleatorios en el array
         float[] arr = new float[size];
